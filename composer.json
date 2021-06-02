@@ -1,0 +1,61 @@
+{
+  "name": "evelution/livewire-tables",
+  "description": "Live tables in Livewire",
+  "keywords": [
+    "evelution",
+    "livewire-tables"
+  ],
+  "homepage": "https://github.com/evelution/livewire-tables",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Craig Eve",
+      "email": "craig@evelution.net",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "illuminate/support": "^8.0",
+    "livewire/livewire": "^2.4"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Evelution\\LivewireTables\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Evelution\\LivewireTables\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../*"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Evelution\\LivewireTables\\LivewireTablesServiceProvider"
+      ],
+      "aliases": {
+        "LivewireTables": "Evelution\\LivewireTables\\LivewireTablesFacade"
+      }
+    }
+  },
+  "minimum-stability": "dev"
+}

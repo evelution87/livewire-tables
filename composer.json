@@ -1,11 +1,11 @@
 {
-  "name": "evelution/livewire-tables",
+  "name": "evelution87/livewire-tables",
   "description": "Live tables in Livewire",
   "keywords": [
     "evelution",
     "livewire-tables"
   ],
-  "homepage": "https://github.com/evelution/livewire-tables",
+  "homepage": "https://github.com/evelution87/livewire-tables",
   "license": "MIT",
   "type": "library",
   "authors": [

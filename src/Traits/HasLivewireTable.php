@@ -15,6 +15,10 @@ trait HasLivewireTable {
 		return [ 'id', 'name' ];
 	}
 	
+	public function livewireSearchAttributes() {
+		return null;
+	}
+	
 	public function livewireTableModel() {
 		return $this->model ?? '\\App\\Models\\' . preg_replace( '/Controller$/', '', basename( get_called_class() ) );
 	}
@@ -24,7 +28,8 @@ trait HasLivewireTable {
 			'model'        => $this->livewireTableModel(),
 			'controller'   => get_called_class(),
 			'initial_load' => false,
-		], $merge );
+		],
+			$merge );
 	}
 	
 	protected function livewireTableModelSlug() {
@@ -36,17 +41,17 @@ trait HasLivewireTable {
 		$actions = [];
 		
 		if ( Route::has( $this->livewireTableModelSlug() . '.show' ) ) {
-			$actions['view'] = [
+			$actions[ 'view' ] = [
 				'route' => route( $this->livewireTableModelSlug() . '.show', $item->id ),
 			];
 		}
 		if ( Route::has( $this->livewireTableModelSlug() . '.edit' ) ) {
-			$actions['edit'] = [
+			$actions[ 'edit' ] = [
 				'route' => route( $this->livewireTableModelSlug() . '.edit', $item->id ),
 			];
 		}
 		if ( Route::has( $this->livewireTableModelSlug() . '.destroy' ) ) {
-			$actions['destroy'] = [
+			$actions[ 'destroy' ] = [
 				'type'   => 'form',
 				'method' => 'DELETE',
 				'route'  => route( $this->livewireTableModelSlug() . '.destroy', $item->id ),
@@ -61,7 +66,7 @@ trait HasLivewireTable {
 			'name'    => [
 				'label'   => 'Name',
 				'class'   => 'font-medium',
-				'closure' => function( $item ) {
+				'closure' => function ( $item ) {
 					if ( Route::has( $this->livewireTableModelSlug() . '.show' ) ) {
 						return '<a href="' . route( $this->livewireTableModelSlug() . '.show', $item->id ) . '">' . $item->name . '</a>';
 					}
@@ -73,7 +78,7 @@ trait HasLivewireTable {
 				'label'   => 'Updated',
 				'type'    => 'timestamp',
 				'class'   => 'w-0',
-				'closure' => function( $item ) {
+				'closure' => function ( $item ) {
 					return $item->updated_at->format( 'j F Y, g:ia' );
 				},
 			],
@@ -82,7 +87,7 @@ trait HasLivewireTable {
 				'sr-only' => true,
 				'type'    => 'actions',
 				'class'   => 'w-0 text-right text-sm font-medium',
-				'actions' => function( $item ) {
+				'actions' => function ( $item ) {
 					return $this->livewireTableActions( $item );
 				},
 			],
